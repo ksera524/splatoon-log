@@ -1,0 +1,6 @@
+selenium
+requests
+psycopg2-binary
+matplotlib
+pandas
+seaborn

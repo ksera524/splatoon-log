@@ -1,0 +1,51 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: xp
+  namespace: sandbox
+spec:
+  schedule: "45 23 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: xp
+              image: qroksera.com/sandbox/xp:latest
+              imagePullPolicy: IfNotPresent
+              env:
+                - name: SLACK_API_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: slack-secret
+                      key: token
+                - name: SLACK_CHANNEL_ID
+                  value: "xp"
+                - name: DATABASE_USER
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgre
+                      key: username
+                - name: DATABASE_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgre
+                      key: password
+                - name: DATABASE_NAME
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgre
+                      key: dbname
+                - name: DATABASE_HOST
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgre
+                      key: host
+                - name: DATABASE_PORT
+                  valueFrom:
+                    secretKeyRef:
+                      name: postgre
+                      key: port
+          imagePullSecrets:
+            - name: harbor
+          restartPolicy: OnFailure
