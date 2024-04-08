@@ -11,7 +11,7 @@ spec:
         spec:
           containers:
             - name: xp
-              image: qroksera.com/sandbox/xp:latest
+              image: qroksera.com/sandbox/xp:202404080438
               imagePullPolicy: IfNotPresent
               env:
                 - name: SLACK_API_TOKEN
