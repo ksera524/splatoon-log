@@ -145,14 +145,6 @@ def main():
     plt.plot(df['date'], df['yagura_x_power'], label='Yagura', marker='o')
     plt.plot(df['date'], df['asari_x_power'], label='Asari', marker='o')
 
-    # タイトルと軸ラベルの設定（日本語フォントを適用）
-    plt.title('X Power')
-    plt.xlabel('date')
-    plt.ylabel('X Power')
-
-    # 凡例の表示
-    plt.legend()
-
     # グラフをPNGとして保存
     plt.savefig('x_power_trends.png')
 
