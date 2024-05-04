@@ -145,6 +145,12 @@ def main():
     plt.plot(df['date'], df['yagura_x_power'], label='Yagura', marker='o')
     plt.plot(df['date'], df['asari_x_power'], label='Asari', marker='o')
 
+    date_interval = 5  # 5日ごとに日付ラベルを表示
+    tick_positions = range(0, len(df['date']), date_interval)
+    tick_labels = [df['date'][i] for i in tick_positions]
+    plt.xticks(tick_positions, tick_labels, rotation=45)  # 日付を45度回転して表示
+
+
     # グラフをPNGとして保存
     plt.savefig('x_power_trends.png')
 
