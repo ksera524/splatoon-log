@@ -4,7 +4,7 @@ metadata:
   name: xp
   namespace: sandbox
 spec:
-  schedule: "45 23 * * *"
+  schedule: "0 3 * * *"
   jobTemplate:
     spec:
       template:
